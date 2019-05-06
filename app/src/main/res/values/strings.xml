@@ -10,4 +10,7 @@
     <string name="submit">Submit</string>
     <string name="error">*You must put all values in all filds</string>
     <string name="image_button">Choose your image</string>
+    <string name="login_title">Authorization</string>
+    <string name="login_or_email">Put your own login or email</string>
+    <string name="user_password">Put your own password</string>
 </resources>

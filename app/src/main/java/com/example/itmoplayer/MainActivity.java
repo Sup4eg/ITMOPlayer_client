@@ -30,15 +30,16 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-    final Button submit = (Button) findViewById(R.id.submit);
-    final EditText f_name = (EditText) findViewById(R.id.f_name);
-    final EditText s_name = (EditText) findViewById(R.id.s_name);
-    final EditText login = (EditText) findViewById(R.id.login);
-    final EditText password = (EditText) findViewById(R.id.password);
-    final EditText email = (EditText) findViewById(R.id.email);
-    final EditText error = (EditText) findViewById(R.id.error);
-    final Button image = (Button) findViewById(R.id.chose);
-    final ImageView imageView = (ImageView) findViewById(R.id.imageView);
+            final Button submit = (Button) findViewById(R.id.submit);
+            final EditText f_name = (EditText) findViewById(R.id.f_name);
+            final EditText s_name = (EditText) findViewById(R.id.s_name);
+            final EditText login = (EditText) findViewById(R.id.login);
+            final EditText password = (EditText) findViewById(R.id.password);
+            final EditText email = (EditText) findViewById(R.id.email);
+            final EditText error = (EditText) findViewById(R.id.error);
+            final Button image = (Button) findViewById(R.id.chose);
+            final ImageView imageView = (ImageView) findViewById(R.id.imageView);
+            final Button logIn_button = (Button) findViewById(R.id.login_button);
 
             image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     });
+        logIn_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LogIn.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
