@@ -22,16 +22,17 @@ class Proxy {
     public String mainMain(String DbCommand, String[] user_db_properties) throws InterruptedException, TimeoutException, IOException {
         EmitNameko client = new EmitNameko();
         if (DbCommand.equals("insert_account_details")) {
-            String args = String.format("{\"args\": [\"%s\", \"%s\", \"%s\", \"%s\", \"%s\"], \"kwargs\": {}}",
-                    user_db_properties[0], user_db_properties[1], user_db_properties[2], user_db_properties[3], user_db_properties[4]);
+            String args = String.format("{\"args\": [\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\"], \"kwargs\": {}}",
+                    user_db_properties[0], user_db_properties[1], user_db_properties[2], user_db_properties[3], user_db_properties[4], user_db_properties[5]);
             msg = client.call("account_details.insert_account_details", args);
         } else if (DbCommand.equals("find_account_details")) {
             String args = String.format("{\"args\": [\"%s\", \"%s\"], \"kwargs\": {}}",
                     user_db_properties[0], user_db_properties[1]);
             msg = client.call("account_details.find_account_details", args);
-
+        } else if (DbCommand.equals("get_account_details")) {
+            String args = String.format("{\"args\": [\"%s\"], \"kwargs\": {}}", user_db_properties[0]);
+            msg = client.call("account_details.get_account_details", args);
         }
-
         return msg;
     }
 

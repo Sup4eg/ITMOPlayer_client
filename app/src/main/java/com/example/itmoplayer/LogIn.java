@@ -1,5 +1,6 @@
 package com.example.itmoplayer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -27,7 +30,7 @@ public class LogIn extends AppCompatActivity {
         final Button submit = (Button) findViewById(R.id.submit);
         final EditText user_login_email = (EditText) findViewById(R.id.user_login);
         final EditText user_password = (EditText) findViewById(R.id.user_password);
-        final EditText regestration_error = (EditText) findViewById(R.id.regestration_error);
+        final TextView regestration_error = (TextView) findViewById(R.id.regestration_error);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,10 +57,13 @@ public class LogIn extends AppCompatActivity {
                                 String msg = proxy.mainMain("find_account_details", user_db_properties);
                                 Gson gson = new Gson();
                                 Map map = gson.fromJson(msg, Map.class);
-                                if (map.get("result") == null) {
+                                if (map.get("result") == "None") {
                                     regestration_error.setText("You need to registrate to go on");
                                 } else if (map.get("result").equals("Done")){
-                                    System.out.println("Yes");
+                                    regestration_error.setText("");
+                                    Intent intent = new Intent(LogIn.this, UserActivity.class);
+                                    intent.putExtra("login", user_login_text);
+                                    startActivity(intent);
                                 }
                                 latch.countDown();
                             } catch (Exception e) {
