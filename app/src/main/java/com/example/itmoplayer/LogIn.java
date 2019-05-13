@@ -57,7 +57,7 @@ public class LogIn extends AppCompatActivity {
                                 String msg = proxy.mainMain("find_account_details", user_db_properties);
                                 Gson gson = new Gson();
                                 Map map = gson.fromJson(msg, Map.class);
-                                if (map.get("result") == "None") {
+                                if (map.get("result").toString().equals("None")) {
                                     regestration_error.setText("You need to registrate to go on");
                                 } else if (map.get("result").equals("Done")){
                                     regestration_error.setText("");

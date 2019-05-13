@@ -1,13 +1,14 @@
 <resources>
-    <string name="app_name">To go on you need to registrate</string>
+    <string name="app_name">ITMOPlayer</string>
     <string name="user">My Profile</string>
     <string name="first_name">First name</string>
     <string name="second_name">Second name</string>
+    <string name="settings">Settings</string>
     <string name="app_login">App Login</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="account_question">Do you have an account?</string>
-    <string name="login">LogIn</string>
+    <string name="login">SignIn</string>
     <string name="submit">Submit</string>
     <string name="error">*You must put all values in all filds</string>
     <string name="image_button">Choose your image</string>
@@ -21,4 +22,7 @@
     <string name="recently_played">Recently Played</string>
     <string name="playlists">Playlists</string>
     <string name="search_music">Search music...</string>
+    <string name="edit">Edit</string>
+    <string name="your_image">Your image</string>
+    <string name="save">Save</string>
 </resources>

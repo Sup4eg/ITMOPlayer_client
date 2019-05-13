@@ -163,7 +163,7 @@
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
             </LinearLayout>
 
-            <EditText
+            <TextView
                 android:id="@+id/error"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -207,12 +207,11 @@
                 android:id="@+id/login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login"
-                android:textSize="20dp"
                 android:layout_gravity="center"
-                android:textColor="@color/blue"
                 android:layout_marginBottom="20dp"
-                />
+                android:text="@string/login"
+                android:textColor="@color/blue"
+                android:textSize="20dp" />
         </LinearLayout>
     </ScrollView>
 

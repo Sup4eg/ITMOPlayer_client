@@ -1,5 +1,6 @@
 package com.example.itmoplayer;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
@@ -13,12 +14,16 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 
 public class UserActivity extends AppCompatActivity {
@@ -27,7 +32,11 @@ public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getSupportActionBar().hide();
         setContentView(R.layout.user);
+
         final String login = getIntent().getExtras().getString("login");
         final String[] user_db_properties = {login};
         final ImageView user_image = (ImageView) findViewById(R.id.image_user);
@@ -36,6 +45,8 @@ public class UserActivity extends AppCompatActivity {
         final TextView music_image = (TextView) findViewById(R.id.font_awesome_music);
         final TextView music_user = (TextView) findViewById(R.id.font_awesome_user);
         final TextView user_name = (TextView) findViewById(R.id.user_name);
+        final TextView edit = (TextView) findViewById(R.id.edit);
+
         clock_image.setTypeface(fontAwesomeFont);
         music_image.setTypeface(fontAwesomeFont);
         music_user.setTypeface(fontAwesomeFont);
@@ -72,7 +83,22 @@ public class UserActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserActivity.this, Settings.class);
+                intent.putExtra("login", login);
+                startActivity(intent);
+            }
+        });
+
     }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_user, menu);
+//        return true;
+//    }
+
 }
 
 
