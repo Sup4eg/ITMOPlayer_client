@@ -1,5 +1,6 @@
 package com.example.itmoplayer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -29,17 +30,20 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeoutException;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     static final int GALLERY_REQUEST = 1;
     static Uri selectedImage = null;
+    Context mContext;
+    static protected Session session = null;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
             final Button submit = (Button) findViewById(R.id.submit);
             final EditText f_name = (EditText) findViewById(R.id.f_name);
             final EditText s_name = (EditText) findViewById(R.id.s_name);
@@ -50,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
             final Button image = (Button) findViewById(R.id.chose);
             final ImageView imageView = (ImageView) findViewById(R.id.imageView);
             final Button logIn_button = (Button) findViewById(R.id.login_button);
+
+            mContext = getApplicationContext();
+            session = new Session(mContext);
+
+            if (!(session.get_user().isEmpty() || session.get_user_password().isEmpty())) {
+            Intent user_activity = new Intent(MainActivity.this, UserActivity.class);
+            user_activity.putExtra("login", session.get_user());
+            startActivity(user_activity);
+        }
+
 
             image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
                                 error.setText("*You should put unique email and login");
                             } else {
                                 error.setText("");
+                                session.set_user(text_login);
+                                session.set_user_password(text_password);
                                 Intent intent = new Intent(MainActivity.this, UserActivity.class);
                                 intent.putExtra("login", text_login);
                                 startActivity(intent);

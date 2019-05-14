@@ -46,6 +46,8 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/image_user"
                 android:layout_width="185dp"
+                android:largeHeap="true"
+                android:hardwareAccelerated="false"
                 android:layout_height="185dp"
                 android:src="@drawable/adele" />
         </LinearLayout>

@@ -40,9 +40,10 @@ public class Settings extends AppCompatActivity {
         final ImageView user_image = (ImageView) findViewById(R.id.image_user);
         final TextView edit_button = (TextView) findViewById(R.id.edit_button);
         final Button save = (Button) findViewById(R.id.save);
+        final Button exit = (Button) findViewById(R.id.exit);
         final TextView error_settings = (TextView) findViewById(R.id.error_settings);
 
-
+        MainActivity mainActivity = new MainActivity();
 
         final CountDownLatch latch = new CountDownLatch(1);
 
@@ -84,6 +85,17 @@ public class Settings extends AppCompatActivity {
         }
 
 
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.session.set_user("");
+                mainActivity.session.set_user_password("");
+                Intent main_intent = new Intent(Settings.this, MainActivity.class);
+                startActivity(main_intent);
+            }
+        });
+
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +105,7 @@ public class Settings extends AppCompatActivity {
                         password_text = password.getText().toString(),
                         user_login_text = user_login.getText().toString(),
                         email_text = email.getText().toString();
+
 
                 String image_uri = String.valueOf(selectedImage);
 
@@ -115,6 +128,8 @@ public class Settings extends AppCompatActivity {
                             try {
                                 Proxy proxy = new Proxy();
                                 String msg = proxy.mainMain("update_account_details", new_user_db_properties);
+                                mainActivity.session.set_user(user_login_text);
+                                mainActivity.session.set_user_password(password_text);
                                 Intent intent = new Intent(Settings.this, UserActivity.class);
                                 intent.putExtra("login", user_login_text);
                                 startActivity(intent);

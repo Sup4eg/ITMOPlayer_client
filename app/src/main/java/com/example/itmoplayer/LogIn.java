@@ -31,6 +31,7 @@ public class LogIn extends AppCompatActivity {
         final EditText user_login_email = (EditText) findViewById(R.id.user_login);
         final EditText user_password = (EditText) findViewById(R.id.user_password);
         final TextView regestration_error = (TextView) findViewById(R.id.regestration_error);
+        MainActivity mainActivity = new MainActivity();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +62,8 @@ public class LogIn extends AppCompatActivity {
                                     regestration_error.setText("You need to registrate to go on");
                                 } else if (map.get("result").equals("Done")){
                                     regestration_error.setText("");
+                                    mainActivity.session.set_user(user_login_text);
+                                    mainActivity.session.set_user_password(user_password_text);
                                     Intent intent = new Intent(LogIn.this, UserActivity.class);
                                     intent.putExtra("login", user_login_text);
                                     startActivity(intent);
