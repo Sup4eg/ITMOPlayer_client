@@ -19,11 +19,13 @@
     <string name="font_awesome_clock">&#xf017;</string>
     <string name="font_awesome_music">&#xf001;</string>
     <string name="font_awesome_user">&#xf2bd;</string>
+    <string name="font_awesome_serch">&#xf002;</string>
     <string name="recently_played">Recently Played</string>
     <string name="playlists">Playlists</string>
-    <string name="search_music">Search music...</string>
+    <string name="search_music">Search music…</string>
     <string name="edit">Edit</string>
     <string name="your_image">Your image</string>
     <string name="save">Save</string>
     <string name="exit">Exit</string>
+    <string name="searching_results">Searching Results</string>
 </resources>

@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".Settings"
-            android:label="@string/settings">
-
-        </activity>
+        <activity android:name=".MusicResults"></activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/settings"></activity>
         <activity
             android:name=".UserActivity"
             android:label="@string/user" />

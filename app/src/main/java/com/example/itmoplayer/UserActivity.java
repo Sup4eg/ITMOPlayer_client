@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,12 +45,17 @@ public class UserActivity extends AppCompatActivity {
         final TextView clock_image = (TextView) findViewById(R.id.font_awesome_clock);
         final TextView music_image = (TextView) findViewById(R.id.font_awesome_music);
         final TextView music_user = (TextView) findViewById(R.id.font_awesome_user);
+        final TextView music_search_image = (TextView) findViewById(R.id.font_awesome_search);
         final TextView user_name = (TextView) findViewById(R.id.user_name);
         final TextView edit = (TextView) findViewById(R.id.edit);
+        final EditText music_request = (EditText) findViewById(R.id.music_request);
+
+
 
         clock_image.setTypeface(fontAwesomeFont);
         music_image.setTypeface(fontAwesomeFont);
         music_user.setTypeface(fontAwesomeFont);
+        music_search_image.setTypeface(fontAwesomeFont);
 
 
         final CountDownLatch latch = new CountDownLatch(1);
@@ -92,12 +98,17 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+
+        music_search_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserActivity.this, MusicResults.class);
+                intent.putExtra("request", music_request.getText().toString());
+                startActivity(intent);
+            }
+        });
+
     }
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_user, menu);
-//        return true;
-//    }
 
 }
 

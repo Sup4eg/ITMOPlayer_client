@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MusicResults">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="324dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/edit_text_backgroud">
+
+            <TextView
+                android:id="@+id/font_awesome_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="8dp"
+                android:text="@string/font_awesome_serch"
+                android:paddingVertical="8dp"
+                android:textSize="27dp" />
+
+            <EditText
+                android:id="@+id/music_request_results"
+                android:layout_width="244dp"
+                android:layout_height="wrap_content"
+                android:alpha="0.45"
+                android:paddingVertical="8dp"
+                android:paddingLeft="13dp"
+                android:text="@string/search_music"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/searching_results"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginStart="42dp"
+            />
+
+        <ListView
+            android:id="@+id/result_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="40dp">-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="80dp"-->
+                <!--tools:srcCompat="@tools:sample/avatars[3]"-->
+                <!--android:layout_marginStart="43dp"/>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_marginStart="16dp"-->
+                <!--&gt;-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--tools:text="@tools:sample/us_zipcodes"-->
+                    <!--android:textSize="20dp"-->
+                    <!--android:textColor="@color/black"-->
+                    <!--android:layout_marginTop="3dp"-->
+                    <!--/>-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--tools:text="@tools:sample/first_names"-->
+                    <!--android:textSize="18dp"-->
+                    <!--android:textColor="@color/black"-->
+                    <!--android:alpha=".75"-->
+                    <!--android:layout_marginTop="5dp"/>-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

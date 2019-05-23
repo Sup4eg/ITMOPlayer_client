@@ -2,6 +2,7 @@ package com.example.itmoplayer;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.rabbitmq.client.ConnectionFactory;
 
 import java.io.IOException;
 import java.util.Map;
@@ -41,6 +43,7 @@ public class Settings extends AppCompatActivity {
         final TextView edit_button = (TextView) findViewById(R.id.edit_button);
         final Button save = (Button) findViewById(R.id.save);
         final Button exit = (Button) findViewById(R.id.exit);
+
         final TextView error_settings = (TextView) findViewById(R.id.error_settings);
 
         MainActivity mainActivity = new MainActivity();
@@ -70,7 +73,6 @@ public class Settings extends AppCompatActivity {
                     email.setText(email_parse);
                     password.setText(password_parse);
                     user_login.setText(user_login_parse);
-
                     latch.countDown();
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -188,17 +188,16 @@
             android:textSize="20dp" />
 
         <Button
-            android:id="@+id/save"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="13dp"
-            android:background="@color/blue"
-            android:text="@string/save"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="13dp"
+        android:background="@color/blue"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

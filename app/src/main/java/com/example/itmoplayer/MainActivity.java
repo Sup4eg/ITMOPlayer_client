@@ -159,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     switch(requestCode) {
                         case GALLERY_REQUEST:
                             if(resultCode == RESULT_OK){
+                                System.out.println(selectedImage);
                                 selectedImage = imageReturnedIntent.getData();
                                 System.out.println(selectedImage);
                                 try {
