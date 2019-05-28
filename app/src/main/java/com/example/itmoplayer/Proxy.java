@@ -36,8 +36,12 @@ class Proxy {
             String args = String.format("{\"args\": [\"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\"], \"kwargs\": {}}", user_db_properties[0],
                     user_db_properties[1], user_db_properties[2], user_db_properties[3], user_db_properties[4], user_db_properties[5], user_db_properties[6]);
             msg = client.call("account_details.update_account_details", args);
+        } else if (DbCommand.equals("get_music_information")) {
+            String args = String.format("{\"args\": [\"%s\"], \"kwargs\": {}}", user_db_properties[0]);
+            msg = client.call("singer_information.get_music_information", args);
         }
         return msg;
+
     }
 
 

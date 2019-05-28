@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayMusic">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="-150dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_music"
+                android:layout_width="200dp"
+                android:largeHeap="true"
+                android:hardwareAccelerated="false"
+                android:layout_height="200dp"
+                android:src="@drawable/adele" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/music_name"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:text="Hello"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="23dp"
+            />
+
+        <TextView
+            android:id="@+id/artist_name"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:text="Adele"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/back_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/font_awesome_step_backward"
+                android:textSize="32dp"
+                android:textColor="@color/blue"
+                />
+
+            <TextView
+                android:id="@+id/play_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/font_awesome_play"
+                android:textSize="32dp"
+                android:textColor="@color/blue"
+                android:layout_marginStart="65dp"
+                />
+            <TextView
+                android:id="@+id/pause_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32dp"
+                android:textColor="@color/blue"
+                android:layout_marginStart="65dp"
+                />
+
+            <TextView
+                android:id="@+id/next_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32dp"
+                android:textColor="@color/blue"
+                android:text="@string/font_awesome_step_forward"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
