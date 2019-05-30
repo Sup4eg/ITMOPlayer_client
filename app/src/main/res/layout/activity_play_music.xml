@@ -47,6 +47,14 @@
             android:text="Adele"
             />
 
+        <SeekBar
+            android:id="@+id/progressControl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="37dp"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +83,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="32dp"
                 android:textColor="@color/blue"
-                android:layout_marginStart="65dp"
                 />
 
             <TextView
@@ -85,8 +92,13 @@
                 android:textSize="32dp"
                 android:textColor="@color/blue"
                 android:text="@string/font_awesome_step_forward"
+                android:layout_marginStart="65dp"
+
                 />
         </LinearLayout>
+
+
+
 
 
 

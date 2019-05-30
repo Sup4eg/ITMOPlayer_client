@@ -39,6 +39,9 @@ class Proxy {
         } else if (DbCommand.equals("get_music_information")) {
             String args = String.format("{\"args\": [\"%s\"], \"kwargs\": {}}", user_db_properties[0]);
             msg = client.call("singer_information.get_music_information", args);
+        } else if (DbCommand.equals("get_music_composition")) {
+            String args = String.format("{\"args\": [\"%s\", \"%s\"], \"kwargs\": {}}", user_db_properties[0], user_db_properties[1]);
+            msg = client.call("singer_information.get_music_composition", args);
         }
         return msg;
 

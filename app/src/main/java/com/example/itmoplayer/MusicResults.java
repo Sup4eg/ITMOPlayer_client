@@ -101,7 +101,6 @@ public class MusicResults extends AppCompatActivity {
 
                 coverView.buildDrawingCache();
                 Bitmap bitmap = coverView.getDrawingCache();
-                System.out.println("МЫ здесь");
 
                 Intent intent = new Intent(MusicResults.this, PlayMusic.class);
                 intent.putExtra("BitmapImage", bitmap);
@@ -206,7 +205,6 @@ public class MusicResults extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ListView setAdapter(String singer, String albums, String songs) throws IOException {
 
-        Gson gson = new Gson();
         singer = singer.replaceAll("=", ":").replaceAll("\\[", "").replaceAll("\\]", "");
         String[] singer_arr = singer.split(",");
 
