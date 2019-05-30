@@ -62,18 +62,16 @@ public class PlayMusic extends AppCompatActivity {
     public class ProgressBar extends Thread {
         @Override
         public void run() {
-            int music_lenght = mediaPlayer.getDuration();
-            int current_time = mediaPlayer.getCurrentPosition();
-            while (current_time != music_lenght) {
+//            int music_lenght = mediaPlayer.getDuration() / 1000;
+            int current_time = mediaPlayer.getCurrentPosition() / 1000;
+            while (true) {
                 Message message = Message.obtain();
                 Bundle bundle = new Bundle();
-                int progress = Math.round(((float)((current_time * 100)/music_lenght)));
-//                System.out.println(String.valueOf(progress));
-                bundle.putString("key1", String.valueOf(progress));
+                bundle.putString("key1", String.valueOf(current_time));
                 message.setData(bundle);
                 progress_handler.sendMessage(message);
-                current_time = mediaPlayer.getCurrentPosition();
-                music_lenght = mediaPlayer.getDuration();
+                current_time = mediaPlayer.getCurrentPosition() / 1000;
+//                music_lenght = mediaPlayer.getDuration() / 1000;
             }
         }
     }
@@ -145,6 +143,7 @@ public class PlayMusic extends AppCompatActivity {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
                         stopPlay(mediaPlayer);
+                        progress_control.setProgress(0);
                     }
                 });
 
@@ -154,7 +153,6 @@ public class PlayMusic extends AppCompatActivity {
                        progress_control.setMax(mediaPlayer.getDuration() / 1000);
                         if(fromUser)
                         {
-                        progress_control.setProgress(progress);
                             mediaPlayer.seekTo(progress*1000);
                             System.out.println(mediaPlayer.getCurrentPosition());
                         }
