@@ -15,20 +15,20 @@
             android:layout_marginTop="40dp">
 
             <ImageView
-                android:id="@+id/cover"
+                android:id="@+id/recently_cover"
                 android:layout_width="69dp"
                 android:layout_height="65dp"
                 android:layout_marginStart="43dp"
                 tools:srcCompat="@tools:sample/avatars[0]" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/music_title"
+                    android:id="@+id/recently_music_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
@@ -37,7 +37,7 @@
                     android:textSize="18dp" />
 
                 <TextView
-                    android:id="@+id/singer_name"
+                    android:id="@+id/recently_singer_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"

@@ -42,6 +42,12 @@ class Proxy {
         } else if (DbCommand.equals("get_music_composition")) {
             String args = String.format("{\"args\": [\"%s\", \"%s\"], \"kwargs\": {}}", user_db_properties[0], user_db_properties[1]);
             msg = client.call("singer_information.get_music_composition", args);
+        }else if (DbCommand.equals("store_music")) {
+            String args = String.format("{\"args\": [\"%s\", \"%s\", \"%s\"], \"kwargs\": {}}", user_db_properties[0], user_db_properties[1], user_db_properties[2]);
+            msg = client.call("recently_music.store_music", args);
+        }else if (DbCommand.equals("get_music")) {
+            String args = String.format("{\"args\": [\"%s\"], \"kwargs\": {}}", user_db_properties[0]);
+            msg = client.call("recently_music.get_music", args);
         }
         return msg;
 

@@ -22,13 +22,57 @@
             android:layout_marginTop="23dp"
             android:layout_marginStart="42dp"
             />
-
-        <ListView
-            android:id="@+id/recently_list"
-            android:layout_width="match_parent"
+        <FrameLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+            <ListView
+                android:id="@+id/recently_list"
+                android:layout_width="match_parent"
+                android:layout_height="580dp">
 
-        </ListView>
+            </ListView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="40dp"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/go_to_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="45"
+                        android:text="@string/font_awesome_user"
+                        android:textSize="32dp" />
+
+                    <TextView
+                        android:id="@+id/go_to_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="22dp"
+                        android:text="@string/font_awesome_serch"
+                        android:alpha="45"
+                        android:textSize="32dp" />
+
+                    <TextView
+                        android:id="@+id/go_to_clock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="45"
+                        android:text="@string/font_awesome_clock"
+                        android:textColor="@color/blue"
+                        android:textSize="32dp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </FrameLayout>
 
     </LinearLayout>
 

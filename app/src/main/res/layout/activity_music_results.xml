@@ -24,8 +24,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginRight="8dp"
-                android:text="@string/font_awesome_serch"
                 android:paddingVertical="8dp"
+                android:text="@string/font_awesome_serch"
                 android:textSize="27dp" />
 
             <EditText
@@ -46,19 +46,63 @@
             android:id="@+id/search_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="23dp"
             android:text="@string/searching_results"
             android:textColor="@color/black"
-            android:textSize="20dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginStart="42dp"
-            />
+            android:textSize="20dp" />
 
-        <ListView
-            android:id="@+id/result_list"
-            android:layout_width="match_parent"
+        <FrameLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-        </ListView>
+            <ListView
+                android:id="@+id/result_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="40dp"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/go_to_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="45"
+                        android:text="@string/font_awesome_user"
+                        android:textSize="32dp" />
+
+                    <TextView
+                        android:id="@+id/go_to_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="22dp"
+                        android:text="@string/font_awesome_serch"
+                        android:textColor="@color/blue"
+                        android:textSize="32dp" />
+
+                    <TextView
+                        android:id="@+id/go_to_clock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="45"
+                        android:text="@string/font_awesome_clock"
+                        android:textSize="32dp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </FrameLayout>
+
 
     </LinearLayout>
 

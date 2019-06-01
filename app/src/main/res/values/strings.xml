@@ -24,7 +24,6 @@
     <string name="font_awesome_pause">&#xf28b;</string>
     <string name="font_awesome_step_forward">&#xf051;</string>
     <string name="font_awesome_step_backward">&#xf048;</string>
-    <string name="recently_played">Recently Played</string>
     <string name="playlists">Playlists</string>
     <string name="search_music">Search music…</string>
     <string name="edit">Edit</string>

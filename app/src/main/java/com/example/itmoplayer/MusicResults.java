@@ -54,6 +54,11 @@ public class MusicResults extends AppCompatActivity {
         final Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
         final EditText music_request = (EditText) findViewById(R.id.music_request_results);
         final TextView music_search_image = (TextView) findViewById(R.id.font_awesome_search);
+
+        final TextView go_to_user = (TextView) findViewById(R.id.go_to_user);
+        final TextView go_to_search = (TextView) findViewById(R.id.go_to_search);
+        final TextView go_to_clock = (TextView) findViewById(R.id.go_to_clock);
+
         final TextView search_view = (TextView) findViewById(R.id.search_view);
         final String request = getIntent().getExtras().getString("request");
         user_db_properties[0] = request;
@@ -62,9 +67,14 @@ public class MusicResults extends AppCompatActivity {
         music_request.setText(request);
         music_search_image.setTypeface(fontAwesomeFont);
 
+        go_to_user.setTypeface(fontAwesomeFont);
+        go_to_clock.setTypeface(fontAwesomeFont);
+        go_to_search.setTypeface(fontAwesomeFont);
+
         latch = new CountDownLatch(1);
         GetMusicData load_request = new GetMusicData();
         load_request.start();
+
         try {
             latch.await();
         } catch (InterruptedException e) {
@@ -87,6 +97,25 @@ public class MusicResults extends AppCompatActivity {
             }
         });
 
+        go_to_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MusicResults.this, UserActivity.class);
+                intent.putExtra("login", MainActivity.session.get_user());
+                startActivity(intent);
+
+            }
+        });
+
+        go_to_clock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MusicResults.this, RecentlyPlayed.class);
+                startActivity(intent);
+
+            }
+        });
+
         ListView androidListView = (ListView) findViewById(R.id.result_list);
 
         androidListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -101,7 +130,7 @@ public class MusicResults extends AppCompatActivity {
 
                 coverView.buildDrawingCache();
                 Bitmap bitmap = coverView.getDrawingCache();
-
+                System.out.println(MusicTitle);
                 Intent intent = new Intent(MusicResults.this, PlayMusic.class);
                 intent.putExtra("BitmapImage", bitmap);
                 intent.putExtra("MusicTitle", MusicTitle);
@@ -210,7 +239,6 @@ public class MusicResults extends AppCompatActivity {
 
         albums = albums.replaceAll("=", ":").replaceAll("\\[", "").replaceAll("\\]", "");
         String[] albums_arr = albums.split(",");
-        System.out.println(albums_arr.length);
 
         songs = songs.replaceAll("=", ":").replaceAll("\\[", "").replaceAll("\\]", "");
         String[] songs_arr = songs.split(",");
@@ -219,39 +247,46 @@ public class MusicResults extends AppCompatActivity {
         List<String> SingerName = new ArrayList<String>();
         List<Bitmap> listViewImage = new ArrayList<Bitmap>();
 
+        if (singer_arr.length > 1) {
+            for (int i = 0; i != singer_arr.length; i = i + 2) {
+                MusicTitle.add("Artist");
+                SingerName.add(singer_arr[i]);
+                String string_image = singer_arr[i + 1].replaceAll("b'", "").replaceAll("\\'", "");
 
-        for (int i = 0; i < singer_arr.length / 2; i = i + 2) {
-            MusicTitle.add("Artist");
-            SingerName.add(singer_arr[i]);
-            String string_image = singer_arr[i + 1].replaceAll("b'", "").replaceAll("\\'", "");
+                byte[] decodedImage = Base64.decode(string_image, Base64.DEFAULT);
 
-            byte[] decodedImage = Base64.decode(string_image, Base64.DEFAULT);
-
-            Bitmap decodedByteImage = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
-            listViewImage.add(decodedByteImage);
+                Bitmap decodedByteImage = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
+                listViewImage.add(decodedByteImage);
+            }
         }
 
-        for (int i = 0; i < albums_arr.length / 3; i = i + 3) {
-            MusicTitle.add(albums_arr[i]);
-            SingerName.add(albums_arr[i + 1]);
-            String string_image = albums_arr[i + 2].replaceAll("b'", "").replaceAll("\\'", "");
+        if (albums_arr.length > 1){
+            for (int i = 0; i != albums_arr.length; i = i + 3) {
+                MusicTitle.add(albums_arr[i]);
+                SingerName.add(albums_arr[i + 1]);
+                String string_image = albums_arr[i + 2].replaceAll("b'", "").replaceAll("\\'", "");
 
-            byte[] decodedImage = Base64.decode(string_image, Base64.DEFAULT);
+                byte[] decodedImage = Base64.decode(string_image, Base64.DEFAULT);
 
-            Bitmap decodedByteImage = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
-            listViewImage.add(decodedByteImage);
+                Bitmap decodedByteImage = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
+                listViewImage.add(decodedByteImage);
+            }
         }
 
-        for (int i = 0; i < songs_arr.length / 3; i = i + 3) {
-            MusicTitle.add(songs_arr[i]);
-            SingerName.add(songs_arr[i + 1]);
-            String string_image = songs_arr[i + 2].replaceAll("b'", "").replaceAll("\\'", "");
 
-            byte[] decodedImage = Base64.decode(string_image, Base64.DEFAULT);
+        if (songs_arr.length > 2) {
+            for (int i = 0; i != songs_arr.length; i = i + 3) {
+                MusicTitle.add(songs_arr[i]);
+                SingerName.add(songs_arr[i + 1]);
+                String string_image = songs_arr[i + 2].replaceAll("b'", "").replaceAll("\\'", "");
 
-            Bitmap decodedByteImage = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
-            listViewImage.add(decodedByteImage);
+                byte[] decodedImage = Base64.decode(string_image, Base64.DEFAULT);
+
+                Bitmap decodedByteImage = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);
+                listViewImage.add(decodedByteImage);
+            }
         }
+
 
 
         List<HashMap<String, Object>> aList = new ArrayList<HashMap<String, Object>>();

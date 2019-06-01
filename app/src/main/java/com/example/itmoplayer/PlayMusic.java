@@ -51,10 +51,9 @@ public class PlayMusic extends AppCompatActivity {
         music_name.setText(MusicTitle);
         artist_name.setText(Singer);
 
+
         StartMusic main_thread = new StartMusic();
         main_thread.start();
-
-
 
     }
 
@@ -62,7 +61,6 @@ public class PlayMusic extends AppCompatActivity {
     public class ProgressBar extends Thread {
         @Override
         public void run() {
-//            int music_lenght = mediaPlayer.getDuration() / 1000;
             int current_time = mediaPlayer.getCurrentPosition() / 1000;
             while (true) {
                 Message message = Message.obtain();
@@ -97,6 +95,8 @@ public class PlayMusic extends AppCompatActivity {
             Proxy proxy = new Proxy();
             try {
                 String msg = proxy.mainMain("get_music_composition", music_request);
+                String[] store_music_information = {music_request[0], music_request[1], MainActivity.session.get_user()};
+                proxy.mainMain("store_music", store_music_information);
                 Gson gson = new Gson();
                 Map map = gson.fromJson(msg, Map.class);
                 String result = map.get("result").toString();

@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -49,7 +50,7 @@ public class UserActivity extends AppCompatActivity {
         final TextView user_name = (TextView) findViewById(R.id.user_name);
         final TextView edit = (TextView) findViewById(R.id.edit);
         final EditText music_request = (EditText) findViewById(R.id.music_request);
-
+        final LinearLayout recently_played_link = (LinearLayout) findViewById(R.id.recently_played_link);
 
 
         clock_image.setTypeface(fontAwesomeFont);
@@ -70,12 +71,21 @@ public class UserActivity extends AppCompatActivity {
                     Gson gson = new Gson();
                     Map map = gson.fromJson(msg, Map.class);
                     String result = map.get("result").toString();
-                    Map user_data = gson.fromJson(result, Map.class);
-                    String image = user_data.get("Image").toString();
-                    user_image.setImageURI(Uri.parse(String.valueOf(image)));
-                    final String f_name = user_data.get("First_name").toString();
-                    final String s_name = user_data.get("Second_name").toString();
-                    user_name.setText(f_name + " " + s_name);
+
+                    if (result.equals("None")) {
+                        MainActivity.session.set_user("");
+                        MainActivity.session.set_user_password("");
+                        Intent intent = new Intent(UserActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    } else {
+
+                        Map user_data = gson.fromJson(result, Map.class);
+                        String image = user_data.get("Image").toString();
+                        user_image.setImageURI(Uri.parse(String.valueOf(image)));
+                        final String f_name = user_data.get("First_name").toString();
+                        final String s_name = user_data.get("Second_name").toString();
+                        user_name.setText(f_name + " " + s_name);
+                    }
                     latch.countDown();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -104,6 +114,14 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserActivity.this, MusicResults.class);
                 intent.putExtra("request", music_request.getText().toString());
+                startActivity(intent);
+            }
+        });
+
+        recently_played_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserActivity.this, RecentlyPlayed.class);
                 startActivity(intent);
             }
         });
