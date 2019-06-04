@@ -12,7 +12,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="40dp"
+            android:paddingBottom="20dp"
+            >
 
             <ImageView
                 android:id="@+id/recently_cover"
@@ -25,7 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
 
                 <TextView
                     android:id="@+id/recently_music_title"
@@ -38,13 +41,12 @@
 
                 <TextView
                     android:id="@+id/recently_singer_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:alpha=".75"
-                    android:text="Ed Sheeran"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    tools:text="@tools:sample/cities" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

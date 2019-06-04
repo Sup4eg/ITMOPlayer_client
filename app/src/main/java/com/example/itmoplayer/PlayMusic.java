@@ -61,16 +61,26 @@ public class PlayMusic extends AppCompatActivity {
     public class ProgressBar extends Thread {
         @Override
         public void run() {
-            int current_time = mediaPlayer.getCurrentPosition() / 1000;
             while (true) {
-                Message message = Message.obtain();
-                Bundle bundle = new Bundle();
-                bundle.putString("key1", String.valueOf(current_time));
-                message.setData(bundle);
-                progress_handler.sendMessage(message);
-                current_time = mediaPlayer.getCurrentPosition() / 1000;
-//                music_lenght = mediaPlayer.getDuration() / 1000;
+                int current_time = mediaPlayer.getCurrentPosition() / 1000;
+                new java.util.Timer().schedule(
+                        new java.util.TimerTask() {
+                            @Override
+                            public void run() {
+                                Message message = Message.obtain();
+                                Bundle bundle = new Bundle();
+                                bundle.putString("key1", String.valueOf(current_time));
+                                message.setData(bundle);
+                                progress_handler.sendMessage(message);
+                            }
+                        },
+                        10
+                );
+
             }
+        }
+        public void moveProgressBar() {
+
         }
     }
 
@@ -86,6 +96,7 @@ public class PlayMusic extends AppCompatActivity {
             final TextView next_music = findViewById(R.id.next_music);
             final TextView back_music = findViewById(R.id.back_music);
             final SeekBar progress_control = findViewById(R.id.progressControl);
+
 
             play_music.setTypeface(fontAwesomeFont);
             pause_music.setTypeface(fontAwesomeFont);
@@ -128,13 +139,13 @@ public class PlayMusic extends AppCompatActivity {
                     public void handleMessage(Message update_music) {
                         Bundle bundle = update_music.getData();
                         int bur_position = Integer.parseInt(bundle.getString("key1"));
-                        progress_control.setMax(mediaPlayer.getDuration() / 1000);
                         progress_control.setProgress(bur_position);
                     }
                 };
 
                 playMusicFile(decodedSong, mediaPlayer, music_title, music_extension);
 
+                progress_control.setMax(mediaPlayer.getDuration() / 1000);
                 ProgressBar bar_thread = new ProgressBar();
                 bar_thread.start();
 
